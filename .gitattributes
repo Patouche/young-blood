@@ -1,0 +1,6 @@
+*.sh        eol=lf
+*.docx      binary
+*.png       diff=exif
+*.pdf       binary
+*.jpeg      diff=exif
+*.jpg       diff=exif
