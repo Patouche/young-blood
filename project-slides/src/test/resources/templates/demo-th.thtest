@@ -1,0 +1,85 @@
+%TEMPLATE_MODE HTML5
+# ------------ separator comment -----------
+%EXACT_MATCH false
+# ------------------------------------------
+%CONTEXT
+page11 = new fr.patouche.slides.SlidePage(0, 'content-1.1')
+page12 = new fr.patouche.slides.SlidePage(1, 'content-1.2')
+slide1 = new fr.patouche.slides.SlideSection(0, 'filename-1', '/path/filename-1', 'content-section-1', { page11, page12 })
+page21 = new fr.patouche.slides.SlidePage(0, 'content-2.1')
+page22 = new fr.patouche.slides.SlidePage(1, 'content-2.2')
+slide2 = new fr.patouche.slides.SlideSection(1, 'filename-2', '/path/filename-2', 'content-section-2', { page21, page22 })
+slides = { slide1, slide2 }
+now = @java.time.LocalDateTime@of(2015, 1, 12, 19, 30, 0)
+# ------------------------------------------
+%MESSAGES
+presentation.title = Test title
+presentation.description = Test description
+presentation.author = Test author
+demo.title = Test page title
+# ------------------------------------------
+%INPUT (file:src/main/webapp/WEB-INF/thymeleaf/demo-th.html)
+# ------------------------------------------
+%OUTPUT
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Test title</title>
+    <meta name="description" content="Test description"/>
+    <meta name="author" content="Test author" />
+    <link rel="stylesheet" href="/testing/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/testing/bootstrap/3.3.6/css/bootstrap-theme.min.css"/>
+    <script src="/testing/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/testing/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="navbar navbar-inverse">
+        <div class="container">
+            <div class="collapse navbar-collapse">
+                <a class="navbar-brand">Demo</a>
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/testing/slides">Slides</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <h1>Test page title</h1>
+    <div class="container">
+        <p>Hello ParisJUG !</p>
+        <p>Il est actuellement : 2015-01-12T19:30</p>
+    </div>
+    <div class="container">
+        <table class="table">
+            <tr>
+                <th>Index</th>
+                <th>Fichier</th>
+                <th>Nb slides</th>
+                <th>Voir</th>
+            </tr>
+            <!--@thymesVar id="slides" type="java.util.List"-->
+            <!--@thymesVar id="s" type="fr.patouche.slides.SlideSection"-->
+            <tr>
+                <td>0</td>
+                <td>filename-1</td>
+                <td>2</td>
+                <td>
+                    <a href="/testing/file/0">Voir</a>
+                </td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>filename-2</td>
+                <td>2</td>
+                <td>
+                    <a href="/testing/file/1">Voir</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

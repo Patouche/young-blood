@@ -1,0 +1,12 @@
+%TEMPLATE_MODE HTML5
+# ------------ separator comment -----------
+%EXACT_MATCH false
+# ------------------------------------------
+%CONTEXT
+content='<h1 class="toto">Hello World</h1><script>alert("toto");</alert>'
+# ------------------------------------------
+%INPUT
+<div yb:jsoup="${content}">div content</div>
+# ------------------------------------------
+%OUTPUT
+<div><h1>Hello World</h1></div>

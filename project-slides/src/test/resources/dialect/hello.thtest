@@ -1,0 +1,9 @@
+%TEMPLATE_MODE HTML5
+# ------------ separator comment -----------
+%EXACT_MATCH false
+# ------------------------------------------
+%INPUT
+<div yb:hello="World">div content</div>
+# ------------------------------------------
+%OUTPUT
+<div>Hello World !</div>

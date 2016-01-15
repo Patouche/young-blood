@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:yb="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <title th:text="#{presentation.title}">Title</title>
+    <meta name="description" th:content="#{presentation.description}" content="description"/>
+    <meta name="author" th:content="#{presentation.author}" content="author"/>
+    <link rel="stylesheet" th:href="@{/bootstrap/3.3.6/css/bootstrap.min.css}" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="@{/bootstrap/3.3.6/css/bootstrap-theme.min.css}" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme.min.css"/>
+    <script th:src="@{/jquery/2.1.4/jquery.min.js}" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script th:src="@{/bootstrap/3.3.6/js/bootstrap.min.js}" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+    <div class="navbar navbar-inverse">
+        <div class="container">
+            <div class="collapse navbar-collapse">
+                <a class="navbar-brand">Demo</a>
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a th:href="@{/slides}" href="reveal-th.html">Slides</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <h1 th:text="#{demo.title}">Title</h1>
+
+    <div class="container">
+        <p yb:hello="ParisJUG">Hello World !</p>
+
+        <p>Il est actuellement : <th:block th:text="${now}" /></p>
+    </div>
+
+    <div class="container">
+        <table class="table">
+            <tr>
+                <th>Index</th>
+                <th>Fichier</th>
+                <th>Nb slides</th>
+                <th>Voir</th>
+            </tr>
+            <!--@thymesVar id="slides" type="java.util.List"-->
+            <!--@thymesVar id="s" type="fr.patouche.slides.SlideSection"-->
+            <tr th:each="s : ${slides}">
+                <td th:text="${s.index}">2</td>
+                <td th:text="${s.fileName}">file name</td>
+                <td th:text="${#lists.size(s.pages)}">14</td>
+                <td>
+                    <a th:href="@{/file/{index}(index=${s.index})}" href="demo-detail-th.html">Voir</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+
+</body>
+</html>

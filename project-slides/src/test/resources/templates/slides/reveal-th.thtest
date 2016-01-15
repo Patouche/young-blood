@@ -1,0 +1,23 @@
+%TEMPLATE_MODE HTML5
+# ------------ separator comment -----------
+%EXACT_MATCH false
+# ------------------------------------------
+%CONTEXT
+page11 = new fr.patouche.slides.SlidePage(0, 'content-1.1')
+page12 = new fr.patouche.slides.SlidePage(1, 'content-1.2')
+section1 = new fr.patouche.slides.SlideSection(0, 'filename-1', '/path/filename-1', 'content-section-1', { page11, page12 })
+page21 = new fr.patouche.slides.SlidePage(0, 'content-2.1')
+page22 = new fr.patouche.slides.SlidePage(1, 'content-2.2')
+section2 = new fr.patouche.slides.SlideSection(1, 'filename-2', '/path/filename-2', 'content-section-2', { page21, page22 })
+sections = { section1, section2 }
+# ------------------------------------------
+%MESSAGES
+presentation.title = Test title
+presentation.description = Test description
+presentation.author = Test author
+demo.title = Test page title
+# ------------------------------------------
+%INPUT (file:src/main/webapp/WEB-INF/thymeleaf/slides/reveal-th.html)
+# ------------------------------------------
+%OUTPUT (classpath:templates/slides/reveal-th.expected.html)
+
